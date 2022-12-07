@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>ToeTacTic</title>
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <script>
+        const statearray = [0,0,0,0,0,0,0,0,0];
+        let turn = false;
+        let win = 0;
+        let win1 = 0;
+        let turns = 0;
+
+        function place(num) {
+            if (win1) {
+                return;
+            }
+            win1 = place1(num);
+        }
+
+        function place1(num){
+            if (statearray[num] == 0)
+            {
+                if (turn) {
+                    var div = document.getElementById(num);
+                    div.src = "images/O.png";
+                    statearray[num] = 2;
+                    checkWin();
+                    if (win == 2) {
+                        winStatus(win);
+                        return 2;
+                    }
+                    else if (turns == 9) {
+                        winStatus(3);
+                        return 3;
+                    }
+                    turn = false;
+                    document.getElementById("name1box").style.border = "5px dotted #E1AD01";
+                    document.getElementById("name2box").style.border = "5px dotted white";
+                    console.log(num + "    " + turn);
+                    console.log(statearray);
+                }
+                else {
+                    var div = document.getElementById(num);
+                    div.src = "images/X.png";
+                    statearray[num] = 1;
+                    checkWin();
+                    if (win == 1) {
+                        winStatus(win);
+                        return 1;
+                    }
+                    else if (turns == 9) {
+                        winStatus(3);
+                        return 3;
+                    }
+                    turn = true;
+                    document.getElementById("name2box").style.border = "5px dotted #E1AD01";
+                    document.getElementById("name1box").style.border = "5px dotted white";
+                    console.log(num + "    " + turn);
+                    console.log(statearray);
+                }
+                turns = turns + 1;
+            }
+        }
+
+        function checkWin() {
+            if (statearray[0]==1 && statearray[1]==1 && statearray[2]==1) {
+                win = 1;
+                return;
+            }
+            else if (statearray[3] == 1 && statearray[4] == 1 && statearray[5] == 1) {
+                win = 1;
+                return;
+            }
+            else if (statearray[6] == 1 && statearray[7] == 1 && statearray[8] == 1) {
+                win = 1;
+                return;
+            }
+            else if (statearray[0] == 1 && statearray[3] == 1 && statearray[6] == 1) {
+                win = 1;
+                return;
+            }
+            else if (statearray[1] == 1 && statearray[4] == 1 && statearray[7] == 1) {
+                win = 1;
+                return;
+            }
+            else if (statearray[2] == 1 && statearray[5] == 1 && statearray[8] == 1) {
+                win = 1;
+                return;
+            }
+            else if (statearray[0] == 1 && statearray[4] == 1 && statearray[8] == 1) {
+                win = 1;
+                return;
+            }
+            else if (statearray[2] == 1 && statearray[5] == 1 && statearray[6] == 1) {
+                win = 1;
+                return;
+            }
+
+            if (statearray[0] == 2 && statearray[1] == 2 && statearray[2] == 2) {
+                win = 2;
+                return;
+            }
+            else if (statearray[3] == 2 && statearray[4] == 2 && statearray[5] == 2) {
+                win = 2;
+                return;
+            }
+            else if (statearray[6] == 2 && statearray[7] == 2 && statearray[8] == 2) {
+                win = 2;
+                return;
+            }
+            else if (statearray[0] == 2 && statearray[3] == 2 && statearray[6] == 2) {
+                win = 2;
+                return;
+            }
+            else if (statearray[1] == 2 && statearray[4] == 2 && statearray[7] == 2) {
+                win = 2;
+                return;
+            }
+            else if (statearray[2] == 2 && statearray[5] == 2 && statearray[8] == 2) {
+                win = 2;
+                return;
+            }
+            else if (statearray[0] == 2 && statearray[4] == 2 && statearray[8] == 2) {
+                win = 2;
+                return;
+            }
+            else if (statearray[2] == 2 && statearray[5] == 2 && statearray[6] == 2) {
+                win = 2;
+                return;
+            }
+        }
+
+        function winStatus(num) {
+            if (num == 1) {
+                document.getElementById("winwin").innerHTML = "X Wins!!";
+                document.getElementById("name2box").style.border = "5px dotted white";
+                document.getElementById("name1box").style.border = "5px dotted white";
+                document.getElementById("winbox").style.border = "5px dotted #E1AD01";
+            }
+            if (num == 2) {
+                document.getElementById("winwin").innerHTML = "O Wins!!";
+                document.getElementById("name1box").style.border = "5px dotted white";
+                document.getElementById("name2box").style.border = "5px dotted white";
+                document.getElementById("winbox").style.border = "5px dotted #E1AD01";
+            }
+            if (num == 3) {
+                document.getElementById("winwin").innerHTML = "Draw!!";
+                document.getElementById("name1box").style.border = "5px dotted white";
+                document.getElementById("name2box").style.border = "5px dotted white";
+                document.getElementById("winbox").style.border = "5px dotted #E1AD01";
+            }
+        }
+
+        function nameForm1() {
+            let name1 = document.getElementById("name-1").value;
+            let name2 = document.getElementById("name-2").value;
+            document.getElementById("player-1").innerHTML = ": " + name1;
+            document.getElementById("player-2").innerHTML = name2 + " :";
+        }
+    </script>
+
+    <div id="main-div">
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <div id="name1box" style="width: 123px; border-radius: 4px; border: 5px dotted #E1AD01;">
+                            <h3 class="name-box" style="margin-left: 5px; font-family: 'Poppins', sans-serif;">X</h3>
+                            <h6 id="player-1" class="name-box" style="margin-left: 5px;">
+                                Player 1
+                            </h6>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="winbox" style="width: 124px; border-radius: 4px; text-align: center; border: 0px;">
+                            <h3 id="winwin" class="name-box" style="margin-right: 5px; font-family: 'Poppins', sans-serif;">- -</h3>
+                            <h6 class="name-box" style="margin-right: 5px;">
+                                Win Status
+                            </h6>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="name2box" style="width: 123px; border-radius: 4px; text-align: right">
+                            <h3 class="name-box" style="margin-right: 5px; font-family: 'Poppins', sans-serif;">O</h3>
+                            <h6 id="player-2" class="name-box" style="margin-right: 5px;">
+                                Player 2
+                            </h6>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <div class="box-left" onclick="place(0)">
+                            <img id=0 src="images/Blank.png"/>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="box" onclick="place(1)">
+                            <img id=1 src="images/Blank.png"/>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="box" onclick="place(2)">
+                            <img id=2 src="images/Blank.png"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <div class="box-left" onclick="place(3)">
+                            <img id=3 src="images/Blank.png"/>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="box" onclick="place(4)">
+                            <img id=4 src="images/Blank.png"/>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="box" onclick="place(5)">
+                            <img id=5 src="images/Blank.png"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <div class="box-bottom" style="margin-left:0px;" onclick="place(6)">
+                            <img id=6 src="images/Blank.png"/>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="box-bottom" onclick="place(7)">
+                            <img id=7 src="images/Blank.png"/>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="box-bottom" onclick="place(8)">
+                            <img id=8 src="images/Blank.png"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div style="width: 370px; margin: auto; margin-top:10px;">
+        <form>
+            <h4 style="display: inline-block; font-family: 'Poppins', sans-serif;" >Player ONE:</h4>
+            <input type="text" id="name-1" class="formin"/>
+            <br/>
+            <h4 style="display: inline-block; font-family: 'Poppins', sans-serif;">Player TWO:</h4>
+            <input type="text" id="name-2" class="formin"/>
+            <br/><br/>
+            <input type="button" id="button1" onclick="nameForm1()" value="Enter">
+            <input type="button" id="button2" onclick="window.location.reload()" value="Reset">
+        </form>
+    </div>
+
+</body>
+</html>

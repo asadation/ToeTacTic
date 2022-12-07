@@ -1,0 +1,78 @@
+#main-div {
+    width: 370px;
+    margin: auto;
+}
+.box {
+    background-color: #E1AD01;
+    width: 120px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 4px;
+}
+.box-bottom {
+    background-color: #E1AD01;
+    width: 120px;
+    margin-left: 5px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 4px;
+}
+.box-left {
+    background-color: #E1AD01;
+    width: 120px;
+    margin-bottom: 5px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 4px;
+}
+.name-box {
+    font-family: 'Koulen', cursive;
+}
+.formin {
+    width: 370px;
+    height: 23px;
+    border: 1px solid #E1AD01;
+    background-color: #E1AD01;
+    color: white;
+    letter-spacing: 1px;
+    border-radius: 4px;
+}
+#button1 {
+    width: 183px;
+    height: 27px;
+    border: 2px solid #E1AD01;
+    background-color: white;
+    letter-spacing: 1px;
+    border-radius: 13px;
+    font: bold;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 2px;
+    display: inline-block;
+}
+#button1:hover {
+    width: 183px;
+    height: 27px;
+    border: 2px solid #E1AD01;
+    background-color: #E1AD01;
+    color: white;
+    letter-spacing: 1px;
+    border-radius: 13px;
+    font: bold;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 2px;
+    display: inline-block;
+}
+#button2 {
+    width: 183px;
+    height: 27px;
+    border: 2px solid #E1AD01;
+    background-color: #E1AD01;
+    color: white;
+    letter-spacing: 1px;
+    border-radius: 13px;
+    font: bold;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 2px;
+}
