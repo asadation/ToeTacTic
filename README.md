@@ -22,5 +22,3 @@ Distributed under the GPL License. See `LICENSE` for more information.
 Asad Rafi - [Github](https://github.com/asadation) - asadation@gmail.com
 
 Project Link: [ToeTacTic](https://github.com/asadation/ToeTacTic)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
